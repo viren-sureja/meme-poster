@@ -1,0 +1,20 @@
+{
+  "name": "virensureja3-me_buildout_xmeme",
+  "version": "1.0.0",
+  "description": "whole project is about creating meme posting website",
+  "main": "scripts/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.crio.do:COHORT_ME_BUILDOUT_XMEME_ENROLL_1612436694845/virensureja3-me_buildout_xmeme.git"
+  },
+  "author": "Viren Sureja",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
