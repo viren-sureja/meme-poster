@@ -1,35 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
 body {
-	line-height: 1.6em;
 	margin: 0;
-	background-color: rgb(214, 214, 214);
+	line-height: 1.6em;
+	background-color: rgb(185, 185, 185);
 	font-family: 'Noto Serif', serif;
 }
 
+#toTop {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	background-color: rgb(0, 0, 0);
+	color: rgb(170, 170, 170);
+	text-decoration: none;
+	font-size: 20px;
+	text-align: center;
+}
+
 img {
-	width: 80%;
-	height: 270px;
+	width: 90%;
+	height: 330px;
 	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 nav {
-	background-color: black;
-	color: white;
-	height: 40px;
+	margin-top: 0;
+	background-color: rgb(82, 82, 82);
+	color: rgb(158, 158, 158);
+	height: 50px;
 	width: 100%;
 }
-
-nav span {
-	padding-left: 48%;
-}
-
-nav a {
-	float: right;
-	color: white;
-}
-
-nav span {
-	align-items: center;
+nav #logo {
+	margin-left: 46%;
+	font-size: 40px;
 }
 
 .container {
@@ -38,32 +45,197 @@ nav span {
 	/* display: block; */
 }
 
-.my-form {
-	width: 50%;
-	margin: auto;
-	border: 1px solid red;
-	padding: auto;
-	background-color: rgb(194, 194, 194);
+/* form */
+.my-form form {
+	max-width: 100%;
+	margin: 10px auto;
+	border: 2px solid black;
+	background-color: rgb(80, 79, 79);
+	color: white;
 }
-
-.form-group {
-	margin-right: 10%;
+.my-form input {
 	display: block;
-	padding: 0.1% 0.2%;
+	width: 98%;
+	margin: 0.1px 0.1px;
+	padding: 1px;
+	background-color: rgb(151, 151, 151);
+	outline: none;
+	color: white;
+	font-size: 1.4em;
+	letter-spacing: 1.5px;
+	font-family: 'Patrick Hand';
+}
+.my-form label {
+	display: block;
+	margin-top: 1px;
+	font-size: 18px;
+}
+textarea {
+	height: 120px;
+}
+.my-form button {
+	margin: 1% 47%;
+	background: crimson;
+	color: white;
+	padding: 6px;
+	border: 0;
+	font-size: 1.2em;
+	cursor: pointer;
 }
 
 .image-container {
 	width: 100%;
-	border: 1px solid blue;
-	/* overflow-y: scroll; */
 }
 
 .image-arranger {
 	display: block;
 	float: left;
-	width: 33.33%;
+	width: 38.33%;
+	padding-left: 4%;
+	border: 1px solid rgb(95, 95, 95);
+	border-radius: 10px;
+	margin-right: 7%;
+	margin-bottom: 1%;
+	background-color: rgb(212, 212, 212);
+	color: rgb(29, 29, 29);
+}
+
+.image-arranger img {
+	padding: auto 2%;
+	border: 1px solid black;
+	border-radius: 8px;
+	/* padding-left: 5%;
+	padding-right: 5%; */
+}
+.image-arranger button {
+	background-color: rgb(85, 85, 85);
+	color: white;
+	outline: none;
+	border-radius: 3px;
+	box-shadow: #888;
+	width: 10%;
+	padding: 5px auto;
+	cursor: pointer;
+}
+
+.image-arranger:nth-child(2n + 1) {
+	margin-bottom: 5%;
+}
+
+.image-arranger:nth-child(2n + 2) {
+	margin-bottom: 5%;
+}
+
+.image-caption-div {
+	margin: 2% auto;
+	/* margin-bottom: -10px; */
+	max-width: 80%;
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.image-edit-button {
+	margin: 2% auto;
+	margin-right: 10%;
+	float: right;
+}
+
+.authorName-tag-div {
+	display: inline-block;
+	width: 60%;
+}
+
+.authorDate-tag-div {
+	/* display: inline-block; */
+	margin-right: 10%;
+	float: right;
 }
 
 footer {
 	display: block;
+}
+
+/* for pop up */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+	position: relative;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 0;
+	border: 1px solid #888;
+	width: 80%;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	-webkit-animation-name: animatetop;
+	-webkit-animation-duration: 0.4s;
+	animation-name: animatetop;
+	animation-duration: 0.4s;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+	from {
+		top: -300px;
+		opacity: 0;
+	}
+	to {
+		top: 0;
+		opacity: 1;
+	}
+}
+
+@keyframes animatetop {
+	from {
+		top: -300px;
+		opacity: 0;
+	}
+	to {
+		top: 0;
+		opacity: 1;
+	}
+}
+
+/* The Close Button */
+.close {
+	color: white;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.modal-header {
+	padding: 2px 16px;
+	background-color: #5cb85c;
+	color: white;
+}
+
+.modal-body {
+	padding: 2px 16px;
+}
+
+.modal-footer {
+	padding: 2px 16px;
+	background-color: #5cb85c;
+	color: white;
 }

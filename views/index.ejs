@@ -31,13 +31,15 @@
 			<div id="img-container" class="image-container">
 				<% memes.forEach((meme) => { %>
 				<div class="image-arranger">
-					<div><%= meme.caption %></div>
-					<button>
+					<div class="image-caption-div"><%= meme.caption %></div>
+					<button class="image-edit-button">
 						<a class="edit" data-doc="<%= memes._id %>">edit</a>
 					</button>
 					<img class="images" src="<%= meme.url %>" />
-					<div>by <%= meme.name %></div>
-					<div>13/02/2021</div>
+					<div class="authorName-tag-div">by <%= meme.name %></div>
+					<div class="authorDate-tag-div">
+						<%= String(meme.updatedAt).substring(4,15) %>
+					</div>
 				</div>
 				<% }) %>
 			</div>
@@ -62,28 +64,82 @@
 					</div>
 				</form>
 			</div> -->
+			<!-- The Modal -->
+			<div id="myModal" class="modal">
+				<!-- Modal content -->
+				<div class="modal-content">
+					<div class="modal-header">
+						<span class="close">&times;</span>
+						<h2>Update Meme information</h2>
+					</div>
+					<div class="modal-body">
+						<div class="my-form">
+							<form action="" id="popup-form" method="POST">
+								<div class="form-group">
+									<label for="fname">Name</label>
+									<input type="text" id="fname" name="name" />
+								</div>
+								<div class="form-group">
+									<label for="caption">Caption</label>
+									<input type="text" id="caption" name="caption" />
+								</div>
+								<div class="form-group">
+									<label for="imgurl">URL</label>
+									<input type="text" id="imgurl" name="url" required />
+								</div>
+								<div class="form-group">
+									<button>submit</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
 			<!-- update form ends -->
 		</div>
 		<%- include('./partials/footer.ejs')%>
 	</body>
 	<script>
-		const edit = document.querySelector('a.edit');
-		edit.addEventListener('click', (e) => {
-			const endpoint = `/memes/${edit.dataset.doc}`;
-		});
+		var modal = document.getElementById('myModal');
+		var edit = document.querySelector('a.edit');
+		var btn = document.getElementById('myBtn');
+		var span = document.getElementsByClassName('close')[0];
+		var popupForm = document.getElementById('popup-form');
 
-		/*  // an ajax call is ready to execute.
+		btn.onclick = function () {
+			console.log(typeof edit.dataset.doc);
+			modal.style.display = 'block';
+			document.getElementById(
+				'popup-form'
+			).action = `/memes/${edit.dataset.doc}`;
+		};
+
+		span.onclick = function () {
+			modal.style.display = 'none';
+		};
+		window.onclick = function (event) {
+			if (event.target == modal) {
+				modal.style.display = 'none';
+			}
+		};
+
+		/* const edit = document.querySelector('a.edit');
 			edit.addEventListener('click', (e) => {
-			const endpoint = `/memes/${edit.dataset.doc}`;
+				const endpoint = `/memes/${edit.dataset.doc}`;
+			});
+		*/
+		/*  // an ajax call is ready to execute.
+				edit.addEventListener('click', (e) => {
+				const endpoint = `/memes/${edit.dataset.doc}`;
 
-			// to trigger the id when we click the delete button
-			// hence we are doing AJAX call.
-			fetch(endpoint, {
-				method: 'DELETE',
-			})
-				.then((response) => response.json())
-				.then((data) => (window.location.href = data.redirect))
-				.catch((err) => console.log(err));
-		}); */
+				// to trigger the id when we click the delete button
+				// hence we are doing AJAX call.
+				fetch(endpoint, {
+					method: 'DELETE',
+				})
+					.then((response) => response.json())
+					.then((data) => (window.location.href = data.redirect))
+					.catch((err) => console.log(err));
+			}); */
 	</script>
 </html>

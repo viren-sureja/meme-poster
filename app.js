@@ -77,14 +77,15 @@ app.get('/memes/:id', (req, res) => {
 app.post('/memes/:id', (req, res) => {
 	// find meme and return json data and, if doesn't exist return 404
 	const id = req.params.id;
-
-	Meme.findOneAndUpdate({ _id: id }, req.body, () => {})
-		.then((result) => {
-			// res.render('blogs/details', { blog: result, title: 'Blog details' });
-			res.send(result);
-		})
-		.catch((err) => {
-			// res.render('404', { title: 'blog not found' });
-			res.status(404);
-		});
+	console.log(id);
+	// Meme.findOneAndUpdate({ _id: id }, req.body, () => {})
+	// 	.then((result) => {
+	// 		// res.render('blogs/details', { blog: result, title: 'Blog details' });
+	// 		res.render('index', { memes: result });
+	// 	})
+	// 	.catch((err) => {
+	// 		// res.render('404', { title: 'blog not found' });
+	// 		// res.status(404);
+	// 		console.log('404', err);
+	// 	});
 });
