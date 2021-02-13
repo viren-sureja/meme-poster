@@ -42,12 +42,35 @@
 				<% }) %>
 			</div>
 			<!-- images ends here -->
+			<!-- update form starts -->
+			<!-- <div class="my-form">
+				<form action="" method="POST">
+					<div class="form-group">
+						<label for="fname">Name</label>
+						<input type="text" id="fname" name="name" />
+					</div>
+					<div class="form-group">
+						<label for="caption">Caption</label>
+						<input type="text" id="caption" name="caption" />
+					</div>
+					<div class="form-group">
+						<label for="imgurl">URL</label>
+						<input type="text" id="imgurl" name="url" required />
+					</div>
+					<div class="form-group">
+						<button>submit</button>
+					</div>
+				</form>
+			</div> -->
+			<!-- update form ends -->
 		</div>
 		<%- include('./partials/footer.ejs')%>
 	</body>
 	<script>
 		const edit = document.querySelector('a.edit');
-		edit.addEventListener('click', (e) => {});
+		edit.addEventListener('click', (e) => {
+			const endpoint = `/memes/${edit.dataset.doc}`;
+		});
 
 		/*  // an ajax call is ready to execute.
 			edit.addEventListener('click', (e) => {
