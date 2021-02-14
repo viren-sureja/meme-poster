@@ -1,0 +1,62 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0.0",
+		"title": "REST API",
+		"description": ""
+	},
+	"host": "localhost:8080",
+	"basePath": "http://localhost:8080/",
+	"tags": [],
+	"schemes": ["http"],
+	"consumes": [],
+	"produces": [],
+	"paths": {
+		"/memes": {
+			"get": {
+				"tags": [],
+				"description": "",
+				"parameters": [],
+				"responses": {}
+			},
+			"post": {
+				"tags": [],
+				"description": "",
+				"parameters": {
+					"name": "ashok kumar",
+					"url": "https://i.picsum.photos/id/1018/3914/2935.jpg?hmac=3N43cQcvTE8NItexePvXvYBrAoGbRssNMpuvuWlwMKg",
+					"caption": "This is a meme"
+				},
+				"responses": {}
+			}
+		},
+		"/memes/{id}": {
+			"get": {
+				"tags": [],
+				"description": "",
+				"parameters": {
+					"id": "{id}"
+				},
+				"responses": {
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			},
+			"post": {
+				"tags": [],
+				"description": "",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {}
+			}
+		}
+	},
+	"definitions": {}
+}
