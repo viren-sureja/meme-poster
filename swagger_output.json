@@ -6,7 +6,7 @@
 		"description": ""
 	},
 	"host": "localhost:8080",
-	"basePath": "http://localhost:8080/",
+	"basePath": "/",
 	"tags": [],
 	"schemes": ["http"],
 	"consumes": [],
@@ -22,11 +22,13 @@
 			"post": {
 				"tags": [],
 				"description": "",
-				"parameters": {
-					"name": "ashok kumar",
-					"url": "https://i.picsum.photos/id/1018/3914/2935.jpg?hmac=3N43cQcvTE8NItexePvXvYBrAoGbRssNMpuvuWlwMKg",
-					"caption": "This is a meme"
-				},
+				"parameters": [
+					{
+						"name": "string",
+						"caption": "string",
+						"url": "string"
+					}
+				],
 				"responses": {}
 			}
 		},
