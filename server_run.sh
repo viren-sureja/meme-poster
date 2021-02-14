@@ -1,2 +1,8 @@
+# server side commands
+
+# to install all the dependencies
 npm install
-nodemon app.js
+
+
+# to start the server
+npm start

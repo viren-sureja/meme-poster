@@ -1,17 +1,23 @@
 var express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const swaggerUi = require('swagger-ui-express');
+require('dotenv').config();
+const swaggerFile = require('./swagger_output.json');
 const Meme = require('./models/memes');
 
 // express app
 var app = express();
 
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+
 // desired && free port no.
-const port = 8000;
+const port = process.env.PORT;
 
 // connect to database
+const dbURI = process.env.dbURI;
 mongoose
-	.connect('mongodb://localhost:27017/xmeme', {
+	.connect(dbURI, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	})
@@ -33,6 +39,7 @@ app.use(morgan('dev'));
 // index page with all memes being displayed
 app.get('/memes', (req, res) => {
 	Meme.find()
+		.limit(100)
 		.sort({ updatedAt: -1 })
 		.then((result) =>
 			res.render('index', {
@@ -45,7 +52,7 @@ app.get('/memes', (req, res) => {
 // to add meme to db through form
 app.post('/memes', (req, res) => {
 	const meme = new Meme(req.body);
-
+	// console.log(req.body);
 	// saving the blog.
 	meme
 		.save()
@@ -53,7 +60,7 @@ app.post('/memes', (req, res) => {
 			res.redirect('/memes');
 		})
 		.catch((err) => {
-			console.log(err);
+			res.status(404);
 		});
 });
 
@@ -78,14 +85,15 @@ app.post('/memes/:id', (req, res) => {
 	// find meme and return json data and, if doesn't exist return 404
 	const id = req.params.id;
 	console.log(id);
-	// Meme.findOneAndUpdate({ _id: id }, req.body, () => {})
-	// 	.then((result) => {
-	// 		// res.render('blogs/details', { blog: result, title: 'Blog details' });
-	// 		res.render('index', { memes: result });
-	// 	})
-	// 	.catch((err) => {
-	// 		// res.render('404', { title: 'blog not found' });
-	// 		// res.status(404);
-	// 		console.log('404', err);
-	// 	});
+	Meme.findOneAndUpdate(
+		{ _id: id },
+		{ caption: req.body.caption, url: req.body.url },
+		() => {}
+	)
+		.then((result) => {
+			res.redirect('/memes');
+		})
+		.catch((err) => {
+			res.status(404);
+		});
 });
