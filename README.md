@@ -6,7 +6,6 @@
 
 <img src="https://github.com/viren-sureja/meme-poster/blob/master/assets/Screenshot%20(22).png" alt="Screenshot of the example app"/>
 
-You can see a hosted version of `The xmeme app` on <a href="https://x-m-e-m-e.herokuapp.com/memes" target="_blank">xmeme</a>.
 
 ## Requirements
 
